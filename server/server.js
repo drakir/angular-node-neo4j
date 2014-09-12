@@ -61,6 +61,7 @@ io.on('connection', function(socket) {
 require('./routes/authenticate')(app, db);
 require('./routes/parent')(app, db);
 require('./routes/schema')(app, db, io);
+require('./routes/student')(app, db);
 require('./routes/teacher')(app, db);
 
 var port = 3000;
