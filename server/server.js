@@ -52,8 +52,10 @@ app.use(methodOverride());
 
 var http = require('http').createServer(app);
 var io = require('socket.io')(http);
+var db = require('./database');
 
-require('./routes/routes')(app,io);
+require('./routes/routes')(app, db, io);
+require('./routes/parents')(app, db);
 
 var port = 3000;
 console.log("App listening on port " + port);
