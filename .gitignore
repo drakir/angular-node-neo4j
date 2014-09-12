@@ -1,0 +1,9 @@
+server/dist
+server/node_modules
+server/npm-debug.log
+client/bower_components
+client/node_modules
+client/.sass-cache
+client/.tmp
+.idea
+*.iml
