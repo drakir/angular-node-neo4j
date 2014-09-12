@@ -54,8 +54,14 @@ var http = require('http').createServer(app);
 var io = require('socket.io')(http);
 var db = require('./database');
 
-require('./routes/routes')(app, db, io);
-require('./routes/parents')(app, db);
+io.on('connection', function(socket) {
+    console.log("A web client connected, id: " + socket.id);
+});
+
+require('./routes/authenticate')(app, db);
+require('./routes/parent')(app, db);
+require('./routes/schema')(app, db, io);
+require('./routes/teacher')(app, db);
 
 var port = 3000;
 console.log("App listening on port " + port);
