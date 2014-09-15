@@ -10,8 +10,17 @@
 angular.module('clientApp')
     .service('schemaService', function schemaService(schemaFactory) {
         return {
-            getSchema: function (schemaId) {
-                return schemaFactory.get({id: schemaId});
+            getSchema: function (schemaId, successCallback, errorCallback) {
+                schemaFactory.get({id: schemaId}).$promise.then(
+                    function (result) {
+                        successCallback(result);
+                    }, function (error) {
+                        if (_.isFunction(errorCallback)) {
+                            errorCallback(error);
+                        } else {
+                            console.log(error);
+                        }
+                    });
             }
         };
     });

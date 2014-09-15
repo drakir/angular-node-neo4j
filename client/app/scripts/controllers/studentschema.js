@@ -2,5 +2,7 @@
 
 angular.module('clientApp')
     .controller('StudentSchemaCtrl', function ($scope, $routeParams, schemaService) {
-        $scope.schema = schemaService.getSchema($routeParams.schemaId);
+        schemaService.getSchema($routeParams.schemaId, function (schema) {
+            $scope.schema = schema;
+        });
     });
