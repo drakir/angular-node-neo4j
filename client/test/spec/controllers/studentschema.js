@@ -10,19 +10,14 @@ describe('Controller: StudentSchemaCtrl', function () {
         mockSchemaService;
 
     var mockSchema = {id: '1', name: 'Höstschema 2015'};
-    var mockSchemaSlot = [
-        {1: {
-            isToday: true,
-            day: '2014-15-09',
-            slot: []
-        }},
-        {2: {
-            isToday: true,
-            day: '2014-15-09',
-            slot: []
-        }}
+    var mockSchemaSlots = [
+        {'isToday': false, 'day': 'Thursday 11/9', 'slot': [
+            {'id': '4d07b440-398d-11e4-8475-e36b8dc15c71', 'title': '', 'from': '2014-09-11 08:00:00', 'to': '2014-09-11 09:00:00', 'studentId': null, 'studentName': null, 'time': '08:00-09:00'}
+        ]},
+        {'isToday': false, 'day': 'Friday 12/9', 'slot': [
+            {'id': '4f6887a0-398d-11e4-8475-e36b8dc15c71', 'title': '', 'from': '2014-09-12 08:00:00', 'to': '2014-09-12 09:00:00', 'studentId': null, 'studentName': null, 'time': '08:00-09:00'}
+        ]}
     ];
-
     // Initialize the controller and a mock scope
     beforeEach(inject(function ($controller, $rootScope) {
         scope = $rootScope.$new();
@@ -30,16 +25,20 @@ describe('Controller: StudentSchemaCtrl', function () {
         mockSchemaService = {
             getSchema: function (schemaId, successCallback) {
                 successCallback(mockSchema);
-            },
-            getSchemaSlots: function (schemaId, successCallback) {
-                successCallback(mockSchemaSlot);
             }
         };
+
+        var mockSchemaSlotsPagingService = {
+            loadSchemaSlots: function (schemaId, successCallback) {
+                successCallback(mockSchemaSlots);
+            }
+        }
 
         StudentSchemaCtrl = $controller('StudentSchemaCtrl', {
             $scope: scope,
             $routeParams: {id: '477ace40-398d-11e4-8475-e36b8dc15c71'},
-            schemaService: mockSchemaService
+            schemaService: mockSchemaService,
+            schemaSlotsPagingService: mockSchemaSlotsPagingService
         });
     }));
 
@@ -49,6 +48,6 @@ describe('Controller: StudentSchemaCtrl', function () {
     });
 
     it('should attach schemaSlots to the scope', function () {
-        expect(scope.filteredSchemaSlots).toBe(mockSchemaSlot);
+        expect(scope.filteredSchemaSlots).toBe(mockSchemaSlots);
     });
 });

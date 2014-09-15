@@ -27,8 +27,8 @@ module.exports = function(config) {
       'bower_components/angular-sanitize/angular-sanitize.js',
       'bower_components/angular-socket.io-mock/angular-socket.io-mock.js',
       'bower_components/moment/min/moment-with-locales.js',
+      'bower_components/underscore/underscore.js',
       'app/scripts/**/*.js',
-      'test/mock/**/*.js',
       'test/spec/**/*.js'
     ],
 
@@ -49,13 +49,12 @@ module.exports = function(config) {
     // - Safari (only Mac)
     // - PhantomJS
     // - IE (only Windows)
-    browsers: [
-      'PhantomJS'
-    ],
+    browsers: ['PhantomJS'],
 
     // Which plugins to enable
     plugins: [
       'karma-phantomjs-launcher',
+      'karma-chrome-launcher',
       'karma-jasmine'
     ],
 
