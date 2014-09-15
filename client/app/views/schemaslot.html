@@ -1,0 +1,48 @@
+<div class="panel panel-default">
+    <div class="panel-heading"><H4>Ny tidpunkt</H4></div>
+    <div class="panel-body">
+        <div class="panel-body">
+            <form class="form" role="form" ng-submit="addSlot(slot)">
+                <div class="form-group">
+                    <div class="col-sm-4">
+                        <label for="fromDate">Välj datum</label>
+
+                        <div class="input-group">
+                            <input id="fromDate" type="text" class="form-control" datepicker-popup="{{format}}"
+                                    ng-model="slot.date"
+                                    is-open="datePickerOpened" min-date="minDate" max-date="maxDate"
+                                    datepicker-options="dateOptions" date-disabled="disableWeekends(date, mode)"
+                                    ng-required="true"
+                                    close-text="Close" show-button-bar="false"/>
+
+                            <div class="input-group-btn">
+                                <button type="button" class="btn btn-default datepicker"
+                                        ng-click="openDatePicker($event)"><span
+                                        class="glyphicon glyphicon-calendar"></span></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-3">
+                        <label for="fromTime">Från</label>
+                        <input id="fromTime" type="time" class="form-control" ng-model="slot.fromTime">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-3">
+                        <label for="toTime">Till</label>
+                        <input id="toTime" type="time" class="form-control" ng-model="slot.toTime">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-2">
+                        <button type="submit" class="btn btn-primary btn-sm btn-addSlot btn-block">Lägg till</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

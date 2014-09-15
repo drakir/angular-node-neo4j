@@ -76,6 +76,14 @@ module.exports = function (grunt) {
                     context: '/socket.io',
                     host: 'localhost',
                     port: 3000
+                },
+                {
+                    context: '/api',
+                    host: 'localhost',
+                    port: 3000,
+                    rewrite: {
+                        '^/api': ''
+                    }
                 }
             ],
             livereload: {

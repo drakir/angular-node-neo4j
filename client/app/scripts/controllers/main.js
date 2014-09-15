@@ -8,16 +8,10 @@
  * Controller of the clientApp
  */
 angular.module('clientApp')
-    .controller('MainCtrl', function ($scope, socket) {
+    .controller('MainCtrl', function ($scope) {
         $scope.awesomeThings = [
             'HTML5 Boilerplate',
             'AngularJS',
             'Karma'
         ];
-
-        socket.emit('eventFromClient', {msg: 'Hello World!'});
-
-        socket.on('eventFromServer', function (data) {
-            console.log('eventFromServer, data: ' + data);
-        });
     });

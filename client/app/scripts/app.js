@@ -1,14 +1,13 @@
 'use strict';
 
-angular
-    .module('clientApp', [
-        'ngAnimate',
-        'ngCookies',
-        'ngResource',
-        'ngRoute',
-        'ngSanitize',
-        'btford.socket-io'
-    ])
+angular.module('clientApp', [
+    'ngAnimate',
+    'ngCookies',
+    'ngResource',
+    'ngRoute',
+    'ngSanitize',
+    'btford.socket-io'
+])
     .config(function ($routeProvider) {
         $routeProvider
             .when('/', {
@@ -18,6 +17,10 @@ angular
             .when('/about', {
                 templateUrl: 'views/about.html',
                 controller: 'AboutCtrl'
+            })
+            .when('/students/:studentId/schemas/:schemaId', {
+                templateUrl: 'views/studentschema.html',
+                controller: 'StudentSchemaCtrl'
             })
             .otherwise({
                 redirectTo: '/'
