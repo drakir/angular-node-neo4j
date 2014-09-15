@@ -5,4 +5,8 @@ angular.module('clientApp')
         schemaService.getSchema($routeParams.schemaId, function (schema) {
             $scope.schema = schema;
         });
+
+        schemaService.getSchemaSlots($routeParams.schemaId, function(schemaSlots) {
+           $scope.filteredSchemaSlots = schemaSlots;
+        });
     });
