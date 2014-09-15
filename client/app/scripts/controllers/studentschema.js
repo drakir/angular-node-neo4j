@@ -6,8 +6,24 @@ angular.module('clientApp')
             $scope.schema = schema;
         });
 
-        schemaSlotsPagingService.loadSchemaSlots($routeParams.schemaId, function(schemaSlots) {
+        schemaSlotsPagingService.loadSchemaSlots($routeParams.schemaId, function (schemaSlots) {
             $scope.filteredSchemaSlots = schemaSlots;
         });
+
+        $scope.next = function ($event) {
+            $scope.filteredSchemaSlots = schemaSlotsPagingService.next($event);
+        }
+
+        $scope.previous = function ($event) {
+            $scope.filteredSchemaSlots = schemaSlotsPagingService.previous($event);
+        }
+
+        $scope.hasPrevious = function () {
+            return schemaSlotsPagingService.hasPrevious();
+        }
+
+        $scope.hasNext = function () {
+            return schemaSlotsPagingService.hasNext();
+        }
 
     });
