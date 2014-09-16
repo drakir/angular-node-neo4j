@@ -30,6 +30,7 @@ describe('Controller: StudentSchemaCtrl', function () {
     // Initialize the controller and a mock scope
     beforeEach(inject(function ($controller, $rootScope) {
         scope = $rootScope.$new();
+        spyOn(scope, "$emit");
 
         mockSchemaService = {
             getSchema: function (schemaId, successCallback) {
@@ -48,6 +49,12 @@ describe('Controller: StudentSchemaCtrl', function () {
             }
         };
 
+        var mockStudentService = {
+            getStudent: function(studentId, successCallback) {
+                successCallback({id: studentId, name: "Julia"});
+            }
+        };
+
         mockSocketFactory = {
             on: function () {
             }
@@ -62,7 +69,8 @@ describe('Controller: StudentSchemaCtrl', function () {
             },
             schemaService: mockSchemaService,
             schemaSlotsPagingService: mockSchemaSlotsPagingService,
-            socket: mockSocketFactory
+            socket: mockSocketFactory,
+            studentService: mockStudentService
         });
     }));
 
@@ -81,6 +89,10 @@ describe('Controller: StudentSchemaCtrl', function () {
 
     it('should disable the time slot button when a slot is already reserved by the student', function () {
         expect(scope.disabled(unreservedSlot)).toBe(true);
+    });
+
+    it('should emit an event when a student has been loaded', function() {
+        expect(scope.$emit).toHaveBeenCalledWith('footerName', 'Julia');
     });
 
 });
