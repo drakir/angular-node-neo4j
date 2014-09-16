@@ -24,9 +24,6 @@ describe('Controller: SchemaCtrl', function () {
         ]}
     ];
 
-    var reservedSlot = mockSchemaSlots[2].slot[1];
-    var unreservedSlot = mockSchemaSlots[0].slot[0];
-
     // Initialize the controller and a mock scope
     beforeEach(inject(function ($controller, $rootScope) {
         scope = $rootScope.$new();
@@ -42,11 +39,6 @@ describe('Controller: SchemaCtrl', function () {
         var mockSchemaSlotsPagingService = {
             loadSchemaSlots: function (schemaId, successCallback) {
                 successCallback(mockSchemaSlots);
-            },
-            getReservedSlots: function () {
-                var reservedSlots = [];
-                reservedSlots.push(reservedSlot);
-                return reservedSlots;
             }
         };
 
@@ -80,12 +72,6 @@ describe('Controller: SchemaCtrl', function () {
         expect(scope.filteredSchemaSlots).toBe(mockSchemaSlots);
     });
 
-    it('should disable the time slot button when the slot is already reserved', function () {
-        expect(scope.disabled(reservedSlot)).toBe(true);
-    });
 
-    it('should disable the time slot button when a slot is already reserved by the student', function () {
-        expect(scope.disabled(unreservedSlot)).toBe(true);
-    });
 
 });
