@@ -17,7 +17,7 @@
                 <tbody>
                 <tr>
                     <td ng-repeat="schemaSlot in filteredSchemaSlots" ng-class="{'active': schemaSlot.isToday}">
-                        <button class="btn btn-block btn-sm btn-default schemaslot"
+                        <button class="btn btn-block btn-sm btn-default"
                                 ng-repeat="slot in schemaSlot.slot"
                                 ng-class="{'btn-success': slot.studentId === null, 'disabled': disabled(slot)}"
                                 ng-click="bookSlot(slot)">
