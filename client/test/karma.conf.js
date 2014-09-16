@@ -28,6 +28,7 @@ module.exports = function(config) {
       'bower_components/angular-socket.io-mock/angular-socket.io-mock.js',
       'bower_components/moment/min/moment-with-locales.js',
       'bower_components/underscore/underscore.js',
+      'bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
       'app/scripts/**/*.js',
       'test/spec/**/*.js'
     ],

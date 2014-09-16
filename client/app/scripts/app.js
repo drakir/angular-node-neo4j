@@ -6,7 +6,8 @@ angular.module('clientApp', [
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'btford.socket-io'
+    'btford.socket-io',
+    'ui.bootstrap'
 ])
     .config(function ($routeProvider) {
         $routeProvider

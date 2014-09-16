@@ -1,0 +1,18 @@
+<div ng-controller="TimePickerCtrl">
+    <label for="fromDate">Välj datum</label>
+
+    <div class="input-group">
+        <input id="fromDate" type="text" class="form-control" datepicker-popup="{{format}}"
+                ng-model="slot.date"
+                is-open="datePickerOpened" min-date="minDate" max-date="maxDate"
+                datepicker-options="dateOptions" date-disabled="disableWeekends(date, mode)"
+                ng-required="true"
+                close-text="Close" show-button-bar="false"/>
+
+        <div class="input-group-btn">
+            <button type="button" class="btn btn-default datepicker"
+                    ng-click="openDatePicker($event)"><span
+                    class="glyphicon glyphicon-calendar"></span></button>
+        </div>
+    </div>
+</div>
