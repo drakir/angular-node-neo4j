@@ -44,6 +44,17 @@ angular.module('clientApp')
                     return successCallback(_.sortBy(slots));
                 });
             },
+            addSchemaSlot: function (schemaId, slot, successCallback) {
+                schemaSlotFactory.save({schemaId: schemaId}, slot).$promise.then(
+                    function (result) {
+                        if (_.isFunction(successCallback)) {
+                            successCallback(result);
+                        }
+                    },
+                    function (error) {
+                        console.log(error);
+                    });
+            },
             book: function (reservation, successCallback, errorCallback) {
                 var params = {
                     schemaId: reservation.schemaId,

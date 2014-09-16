@@ -1,5 +1,5 @@
 module.exports = function (app, db, io) {
-
+    var uuid = require('node-uuid');
     /**
      * Find all schemas
      */

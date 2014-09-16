@@ -1,5 +1,5 @@
 module.exports = function (app, db) {
-
+    var uuid = require('node-uuid');
     /**
      * Find all students
      */
