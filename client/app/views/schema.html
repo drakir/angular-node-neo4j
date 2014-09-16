@@ -3,7 +3,8 @@
     <div class="panel-body">
         <div class="panel-body">
             <ul class="pager">
-                <li class="previous"><a href="#" ng-if="hasPrevious()" ng-click="previous($event)">&larr; Föregående</a></li>
+                <li class="previous"><a href="#" ng-if="hasPrevious()" ng-click="previous($event)">&larr; Föregående</a>
+                </li>
                 <li class="next"><a href="#" ng-if="hasNext()" ng-click="next($event)">Nästa &rarr;</a></li>
             </ul>
             <table class="table schema">
@@ -21,23 +22,13 @@
                                 ng-repeat="slot in schemaSlot.slot"
                                 ng-class="{'btn-success': slot.studentId === null, 'disabled': disabled(slot)}"
                                 ng-click="bookSlot(slot)">
-                            <span class="slotTime">{{slot.time}}</span><span class="studentName" ng-if="slot.studentId !== null">{{slot.studentName}}</span>
+                            <span class="slotTime">{{slot.time}}</span><span class="studentName"
+                                ng-if="slot.studentId !== null">{{slot.studentName}}</span>
                         </button>
                     </td>
                 </tr>
                 </tbody>
             </table>
-            <!--<div ng-if="actor === 'teacher'" class="col-sm-2 col-sm-offset-10">-->
-                <!--<div class="btn-group" dropdown is-open="status.isopen">-->
-                    <!--<button type="button" class="btn btn-primary btn-sm dropdown-toggle">-->
-                        <!--Skicka <span class="caret"></span>-->
-                    <!--</button>-->
-                    <!--<ul class="dropdown-menu" role="menu">-->
-                        <!--<li ng-repeat="class in classes"><a href="#" ng-click="sendToParents(class.name, $event)">{{class.name}}</a>-->
-                        <!--</li>-->
-                    <!--</ul>-->
-                <!--</div>-->
-            <!--</div>-->
         </div>
     </div>
 </div>

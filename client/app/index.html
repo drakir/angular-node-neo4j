@@ -32,7 +32,8 @@
 
       <div ng-view=""></div>
 
-      <div class="footer">
+      <div ng-controller="FooterCtrl" class="footer">
+          <p ng-if="footerName">{{footerName}}</p>
       </div>
     </div>
 
@@ -92,6 +93,7 @@
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/about.js"></script>
         <script src="scripts/controllers/header.js"></script>
+        <script src="scripts/controllers/footer.js"></script>
         <script src="scripts/services/socketfactory.js"></script>
         <script src="scripts/services/schemaservice.js"></script>
         <script src="scripts/controllers/studentschema.js"></script>
@@ -102,6 +104,8 @@
         <script src="scripts/services/datetimeservice.js"></script>
         <script src="scripts/services/stringservice.js"></script>
         <script src="scripts/services/schemaslotspagingservice.js"></script>
+        <script src="scripts/services/studentservice.js"></script>
+        <script src="scripts/services/studentfactory.js"></script>
         <!-- endbuild -->
 </body>
 </html>

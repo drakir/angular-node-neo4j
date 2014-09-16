@@ -1,7 +1,11 @@
 'use strict';
 
 angular.module('clientApp')
-    .controller('StudentSchemaCtrl', function ($scope, $routeParams, schemaService, schemaSlotsPagingService, socket) {
+    .controller('StudentSchemaCtrl', function ($scope, $routeParams, schemaService, schemaSlotsPagingService, socket, studentService) {
+
+        studentService.getStudent($routeParams.studentId, function(student) {
+            $scope.$emit('footerName', student.name);
+        });
 
         schemaService.getSchema($routeParams.schemaId, function (schema) {
             $scope.schema = schema;
@@ -55,7 +59,7 @@ angular.module('clientApp')
             function isReservedSlot(slot) {
                 return _.filter(reservedSlots, function (reservedSlot) {
                     return reservedSlot === slot;
-                }).length > 0
+                }).length > 0;
             }
 
             function studentAlreadyReservedASlot() {

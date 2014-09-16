@@ -15,7 +15,7 @@ module.exports = function (app, db) {
     });
 
     /**
-     * Get a specific parent
+     * Get a specific student
      */
     app.get('/api/students/:id', function (req, res) {
         var cypherQuery = "match (s:Student {id:{id}}) return s.id as id, s.name as name";
@@ -23,7 +23,7 @@ module.exports = function (app, db) {
             if (error) {
                 res.send(error);
             } else {
-                res.json(results);
+                res.json(results[0]);
             }
         });
     });
