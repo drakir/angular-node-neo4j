@@ -49,4 +49,18 @@ angular.module('clientApp')
             schemaService.book(reservation, {});
         };
 
+        $scope.disabled = function(slot) {
+            var reservedSlots = schemaSlotsPagingService.getReservedSlots();
+            function isReservedSlot(slot) {
+                return _.filter(reservedSlots, function(reservedSlot) {
+                    return reservedSlot === slot;}
+                ).length > 0
+            }
+
+            function studentAlreadyReservedASlot() {
+                return _.findWhere(reservedSlots, {studentId: $routeParams.studentId}) !== undefined;
+            }
+            return isReservedSlot(slot) || studentAlreadyReservedASlot();
+        };
+
     });

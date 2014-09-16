@@ -104,5 +104,13 @@ describe('Service: schemaSlotsPagingService', function () {
         expect(schemaSlotsPagingService.hasPrevious()).toBe(true);
     });
 
+    it('should find reserved slots', function() {
+        schemaSlotsPagingService.loadSchemaSlots(schemaId, function () {
+            var reservedSlots = schemaSlotsPagingService.getReservedSlots();
+            expect(reservedSlots.length).toBe(1);
+            expect(reservedSlots[0].studentId).toBe('8564d720-38d7-11e4-afdd-8fcacdd16f0a');
+        });
+    });
+
 
 });

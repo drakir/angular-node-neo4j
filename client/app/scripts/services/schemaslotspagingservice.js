@@ -78,6 +78,18 @@ angular.module('clientApp')
                 }
 
                 return filteredSlots;
+            },
+            getReservedSlots: function() {
+                var allSlots = [];
+                _.each(slots, function (schemaSlot) {
+                    _.each(schemaSlot.slot, function (slot) {
+                        allSlots.push(slot);
+                    });
+                });
+
+                return _.filter(allSlots, function (slot) {
+                    return slot.studentId !== null;
+                });
             }
         };
     });
