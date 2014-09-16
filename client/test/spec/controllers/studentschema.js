@@ -48,7 +48,7 @@ describe('Controller: StudentSchemaCtrl', function () {
         });
     }));
 
-    it('should attach routeParams.schemaID to scope', function () {
+    it('should attach routeParams.schemaId to scope', function () {
         expect(scope.schemaId).toBe('1');
     });
 

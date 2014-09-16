@@ -14,6 +14,17 @@ module.exports = function (app, db) {
         });
     });
 
+    app.get('/api/teachers/:id', function (req, res) {
+        var cypherQuery = "match (t:Teacher {id:{id}}) return t.id as id, t.name as name";
+        db.query(cypherQuery, {id:req.params.id}, function (error, results) {
+            if (error) {
+                res.send(error);
+            } else {
+                res.json(results[0]);
+            }
+        });
+    });
+
     /**
      * Find all teacher's classes
      */

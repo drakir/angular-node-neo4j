@@ -1,17 +1,16 @@
 'use strict';
 
-/**
- * @ngdoc function
- * @name clientApp.controller:TeacherschemaCtrl
- * @description
- * # TeacherschemaCtrl
- * Controller of the clientApp
- */
 angular.module('clientApp')
-  .controller('TeacherSchemaCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-  });
+    .controller('TeacherSchemaCtrl', function ($scope, $routeParams, teacherService) {
+        //add it to the scope to make it accessible to SchemaCtrl
+        $scope.schemaId = $routeParams.schemaId;
+
+        teacherService.getTeacher($routeParams.teacherId, function(teacher) {
+            $scope.$emit('footerName', teacher.name);
+        });
+
+        $scope.disabled = function () {
+            return true;
+        };
+
+    });
