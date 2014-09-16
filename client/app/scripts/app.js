@@ -22,6 +22,10 @@ angular.module('clientApp', [
                 templateUrl: 'views/studentschema.html',
                 controller: 'StudentSchemaCtrl'
             })
+            .when('/teachers/:teacherId/schemas/:schemaId', {
+              templateUrl: 'views/teacherschema.html',
+              controller: 'TeacherSchemaCtrl'
+            })
             .otherwise({
                 redirectTo: '/'
             });
