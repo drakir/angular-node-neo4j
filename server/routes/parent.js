@@ -2,7 +2,7 @@ module.exports = function (app, db) {
     /**
      * Find all parents
      */
-    app.get('/parents', function (req, res) {
+    app.get('/api/parents', function (req, res) {
         var cypherQuery = "match (p:Parent) return p.id as id, p.name as name, p.email as email";
         db.query(cypherQuery, {}, function (error, results) {
             if (error) {
@@ -16,7 +16,7 @@ module.exports = function (app, db) {
     /**
      * Get a specific parent
      */
-    app.get('/parents/:id', function (req, res) {
+    app.get('/api/parents/:id', function (req, res) {
         var cypherQuery = "match (p:Parent {id:{id}}) return p.id as id, p.name as name, p.email as email";
         db.query(cypherQuery, {id: req.params.id}, function (error, results) {
             if (error) {
@@ -30,7 +30,7 @@ module.exports = function (app, db) {
     /**
      * Add a new parent
      */
-    app.post('/parents', function (req, res) {
+    app.post('/api/parents', function (req, res) {
         var newParent = {
             id: uuid.v1(),
             name: req.body.name,
@@ -50,7 +50,7 @@ module.exports = function (app, db) {
     /**
      * Delete an existing parent
      */
-    app.delete('/parents/:id', function (req, res) {
+    app.delete('/api/parents/:id', function (req, res) {
         var cypherQuery = "match (p:Parent {id:{id}}) delete p";
         db.query(cypherQuery, {id: req.params.id}, function (error) {
             if (error) {
@@ -64,7 +64,7 @@ module.exports = function (app, db) {
     /**
      * Update a parent
      */
-    app.put('/parents/:id', function (req, res) {
+    app.put('/api/parents/:id', function (req, res) {
         var cypherQuery = "match (p:Parent {id:{id}}) set p.name={name}, p.email={email} return p.id as id, p.name as name, p.email as email";
         var params = {
             id: req.params.id,

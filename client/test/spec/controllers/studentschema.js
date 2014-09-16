@@ -7,7 +7,8 @@ describe('Controller: StudentSchemaCtrl', function () {
 
     var StudentSchemaCtrl,
         scope,
-        mockSchemaService;
+        mockSchemaService,
+        mockSocketFactory;
 
     var mockSchema = {id: '1', name: 'Höstschema 2015'};
     var mockSchemaSlots = [
@@ -18,6 +19,8 @@ describe('Controller: StudentSchemaCtrl', function () {
             {'id': '4f6887a0-398d-11e4-8475-e36b8dc15c71', 'title': '', 'from': '2014-09-12 08:00:00', 'to': '2014-09-12 09:00:00', 'studentId': null, 'studentName': null, 'time': '08:00-09:00'}
         ]}
     ];
+
+
     // Initialize the controller and a mock scope
     beforeEach(inject(function ($controller, $rootScope) {
         scope = $rootScope.$new();
@@ -32,13 +35,20 @@ describe('Controller: StudentSchemaCtrl', function () {
             loadSchemaSlots: function (schemaId, successCallback) {
                 successCallback(mockSchemaSlots);
             }
-        }
+        };
+
+        mockSocketFactory = {
+          on: function() {
+          }
+        };
+
 
         StudentSchemaCtrl = $controller('StudentSchemaCtrl', {
             $scope: scope,
             $routeParams: {id: '477ace40-398d-11e4-8475-e36b8dc15c71'},
             schemaService: mockSchemaService,
-            schemaSlotsPagingService: mockSchemaSlotsPagingService
+            schemaSlotsPagingService: mockSchemaSlotsPagingService,
+            socket: mockSocketFactory
         });
     }));
 

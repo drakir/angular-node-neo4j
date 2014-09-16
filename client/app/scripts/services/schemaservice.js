@@ -29,7 +29,7 @@ angular.module('clientApp')
                     _.each(data, function (slot) {
                         var fromTime = dateTimeService.formatTime(slot.from);
                         var toTime = dateTimeService.formatTime(slot.to);
-                        var day =  dateTimeService.dayInYear(slot.from);
+                        var day = dateTimeService.dayInYear(slot.from);
 
                         slots[day] = slots[day] || {
                             isToday: dateTimeService.isToday(slot.from),
@@ -43,6 +43,28 @@ angular.module('clientApp')
 
                     return successCallback(_.sortBy(slots));
                 });
+            },
+            book: function (reservation, successCallback, errorCallback) {
+                var params = {
+                    schemaId: reservation.schemaId,
+                    slotId: reservation.slotId
+                };
+                var body = {
+                    studentId: reservation.studentId
+                };
+                schemaSlotFactory.book(params, body).$promise.then(
+                    function (result) {
+                        if (_.isFunction(successCallback)) {
+                            successCallback(result);
+                        }
+                    },
+                    function (error) {
+                        if (_.isFunction(errorCallback)) {
+                            errorCallback(error);
+                        } else {
+                            console.log(error);
+                        }
+                    });
             }
         };
     });

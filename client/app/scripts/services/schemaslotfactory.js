@@ -9,5 +9,6 @@
  */
 angular.module('clientApp')
     .factory('schemaSlotFactory', function ($resource) {
-        return $resource('/api/schemas/:schemaId/slots/:slotId', {}, {});
+        return $resource('/api/schemas/:schemaId/slots/:slotId', {},
+            { book: {method: 'PUT'} });
     });

@@ -3,7 +3,7 @@ module.exports = function (app, db) {
     /**
      * Find all teachers
      */
-    app.get('/teachers/', function (req, res) {
+    app.get('/api/teachers/', function (req, res) {
         var cypherQuery = "match (t:Teacher)-[:worksAt]->(s:School) return t.id as id, t.name as name, s.name as worksAt";
         db.query(cypherQuery, {}, function (error, results) {
             if (error) {
@@ -17,7 +17,7 @@ module.exports = function (app, db) {
     /**
      * Find all teacher's classes
      */
-    app.get('/teachers/:teacherId/classes', function (req, res) {
+    app.get('/api/teachers/:teacherId/classes', function (req, res) {
         var cypherQuery = "match (t:Teacher {id:{teacherId}})-[:teacherOf]->(c:Class) return c.name as name";
         db.query(cypherQuery, {teacherId: req.params.teacherId}, function (error, response) {
             if (error) {
@@ -31,7 +31,7 @@ module.exports = function (app, db) {
     /**
      * Find all teacher schemas
      */
-    app.get('/teachers/:teacherId/schemas', function (req, res) {
+    app.get('/api/teachers/:teacherId/schemas', function (req, res) {
         var cypherQuery = "match (s:Schema)<-[:responsible]-(t:Teacher {id:{teacherId}}) return s.id as id, s.name as name";
         db.query(cypherQuery, {teacherId: req.params.teacherId}, function (error, results) {
             if (error) {
@@ -45,7 +45,7 @@ module.exports = function (app, db) {
     /**
      * Create a new teacher schema
      */
-    app.post('/teachers/:teacherId/schemas', function (req, res) {
+    app.post('/api/teachers/:teacherId/schemas', function (req, res) {
         var newSchema = {
             id: uuid.v1(),
             name: req.body.name,
@@ -65,7 +65,7 @@ module.exports = function (app, db) {
     /**
      * Delete an existing teacher's schema
      */
-    app.delete('/teachers/:teacherId/schemas/:schemaId', function (req, res) {
+    app.delete('/api/teachers/:teacherId/schemas/:schemaId', function (req, res) {
         var cypherQuery = "match (t:Teacher {id:{teacherId}})-[r:responsible]->(s:Schema {id:{schemaId}}) optional match (s)-[h:has]->(sl:Slot) optional match (sl)<-[c]-(st:Student) optional match (sl)-[l:location]->(sc:School) delete l,c,h,sl,r,s";
         var params = {
             schemaId: req.params.schemaId,
@@ -83,7 +83,7 @@ module.exports = function (app, db) {
     /**
      * Update an existing teacher's schema
      */
-    app.put('/teachers/:teacherId/schemas/:schemaId', function (req, res) {
+    app.put('/api/teachers/:teacherId/schemas/:schemaId', function (req, res) {
         var cypherQuery = "match (t:Teacher {id:{teacherId}})-[r:responsible]->(s:Schema {id:{schemaId}}) set s.name = {name} return s.id as id, s.name as name";
         var params = {
             schemaId: req.params.schemaId,
@@ -102,7 +102,7 @@ module.exports = function (app, db) {
     /**
      * TODO: Send an email to all parents of the children in the teacher's class with a constructed url to the schema booking page
      */
-    app.post('/teachers/:teacherId/schemas/:schemaId/sendToParents', function (req, res) {
+    app.post('/api/teachers/:teacherId/schemas/:schemaId/sendToParents', function (req, res) {
         console.log("sendToParents invoked");
         var params = {
             schemaId: req.params.schemaId,

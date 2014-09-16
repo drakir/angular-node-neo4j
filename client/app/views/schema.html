@@ -27,17 +27,17 @@
                 </tr>
                 </tbody>
             </table>
-            <div ng-if="actor === 'teacher'" class="col-sm-2 col-sm-offset-10">
-                <div class="btn-group" dropdown is-open="status.isopen">
-                    <button type="button" class="btn btn-primary btn-sm dropdown-toggle">
-                        Skicka <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu" role="menu">
-                        <li ng-repeat="class in classes"><a href="#" ng-click="sendToParents(class.name, $event)">{{class.name}}</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+            <!--<div ng-if="actor === 'teacher'" class="col-sm-2 col-sm-offset-10">-->
+                <!--<div class="btn-group" dropdown is-open="status.isopen">-->
+                    <!--<button type="button" class="btn btn-primary btn-sm dropdown-toggle">-->
+                        <!--Skicka <span class="caret"></span>-->
+                    <!--</button>-->
+                    <!--<ul class="dropdown-menu" role="menu">-->
+                        <!--<li ng-repeat="class in classes"><a href="#" ng-click="sendToParents(class.name, $event)">{{class.name}}</a>-->
+                        <!--</li>-->
+                    <!--</ul>-->
+                <!--</div>-->
+            <!--</div>-->
         </div>
     </div>
 </div>

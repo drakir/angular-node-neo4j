@@ -1,6 +1,6 @@
 module.exports = function (app,db) {
 
-    app.post('/authenticate', function (req, res) {
+    app.post('/api/authenticate', function (req, res) {
 
         function authenticationFailed() {
             res.statusCode = 401;
