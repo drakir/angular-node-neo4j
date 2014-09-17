@@ -1,9 +1,7 @@
-<div ng-controller="TimePickerCtrl">
-    <label for="fromDate">Välj datum</label>
-
+    <label for="dateField">Välj datum</label>
     <div class="input-group">
-        <input id="fromDate" type="text" class="form-control" datepicker-popup="{{format}}"
-                ng-model="slot.date"
+        <input id="dateField" type="text" class="form-control" datepicker-popup="{{format}}"
+                ng-model="selectedDate"
                 is-open="datePickerOpened" min-date="minDate" max-date="maxDate"
                 datepicker-options="dateOptions" date-disabled="disableWeekends(date, mode)"
                 ng-required="true"
@@ -15,4 +13,3 @@
                     class="glyphicon glyphicon-calendar"></span></button>
         </div>
     </div>
-</div>

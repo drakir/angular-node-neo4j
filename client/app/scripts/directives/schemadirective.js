@@ -11,7 +11,6 @@ angular.module('clientApp')
         return {
             templateUrl: 'views/schema.html',
             restrict: 'E',
-            scope: false,
-            transclude: true
+            scope: false
         };
     });

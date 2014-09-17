@@ -5,6 +5,14 @@ angular.module('clientApp')
         //add it to the scope to make it accessible to SchemaCtrl
         $scope.schemaId = $routeParams.schemaId;
 
+        $scope.selectedDate = new Date();
+
+        $scope.slot = {
+            date: '',
+            fromTime: '',
+            toTime: ''
+        };
+
         teacherService.getTeacher($routeParams.teacherId, function(teacher) {
             $scope.$emit('footerName', teacher.name);
         });

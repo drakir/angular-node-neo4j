@@ -1,13 +1,10 @@
 'use strict';
 
 angular.module('clientApp')
-    .controller('TimePickerCtrl', function ($scope) {
+    .controller('DatePickerCtrl', function ($scope) {
 
-        $scope.slot = {
-            date: new Date(),
-            fromTime: '',
-            toTime: ''
-        };
+        $scope.selectedDate = new Date();
+
         $scope.dateOptions = {
             formatYear: 'yy',
             startingDay: 1
@@ -27,4 +24,8 @@ angular.module('clientApp')
 
             $scope.datePickerOpened = true;
         };
+
+        $scope.$watch('selectedDate', function(selectedDate) {
+            console.log('datepicker.js: $scope.selectedDate: ' +selectedDate);
+        });
     });

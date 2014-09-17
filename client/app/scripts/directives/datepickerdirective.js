@@ -7,11 +7,13 @@
  * # timePickerDirective
  */
 angular.module('clientApp')
-    .directive('timePickerDirective', function () {
+    .directive('datePickerDirective', function () {
         return {
-            templateUrl: 'views/timepicker.html',
+            templateUrl: 'views/datepicker.html',
+            controller: 'DatePickerCtrl',
             restrict: 'E',
-            scope: true,
-            transclude: false
+            scope: {
+                selectedDate: '='
+            }
         };
     });

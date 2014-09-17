@@ -11,7 +11,6 @@ angular.module('clientApp')
         return {
             templateUrl: 'views/schemaslot.html',
             restrict: 'E',
-            scope: true,
-            transclude: false
+            scope: false
         };
     });
