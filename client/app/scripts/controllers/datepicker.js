@@ -24,8 +24,4 @@ angular.module('clientApp')
 
             $scope.datePickerOpened = true;
         };
-
-        $scope.$watch('selectedDate', function(selectedDate) {
-            console.log('datepicker.js: $scope.selectedDate: ' +selectedDate);
-        });
     });

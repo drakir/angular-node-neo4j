@@ -34,4 +34,11 @@ describe('Service: dateTimeService', function () {
         expect(dateTimeService.dayInYear(moment('2014-12-31').toDate())).toBe(365);
     });
 
+    it('should format date and time separately into a date time string', function() {
+        var dateStr = '2015-01-01';
+        var timeStr = '10:00';
+
+        expect(dateTimeService.formatToDateTime(dateStr, timeStr)).toBe('2015-01-01 10:00:00');
+    });
+
 });
