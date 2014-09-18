@@ -9,17 +9,21 @@
  */
 angular.module('clientApp')
     .service('schemaService', function schemaService(schemaFactory, schemaSlotFactory, dateTimeService) {
+        function defaultErrorHandler(error, errorCallback) {
+            if (_.isFunction(errorCallback)) {
+                errorCallback(error);
+            } else {
+                console.log(error);
+            }
+        }
+
         return {
             getSchema: function (schemaId, successCallback, errorCallback) {
                 schemaFactory.get({id: schemaId}).$promise.then(
                     function (result) {
                         successCallback(result);
                     }, function (error) {
-                        if (_.isFunction(errorCallback)) {
-                            errorCallback(error);
-                        } else {
-                            console.log(error);
-                        }
+                        defaultErrorHandler(error, errorCallback);
                     });
             },
             getSchemaSlots: function (schemaId, successCallback) {
@@ -44,7 +48,7 @@ angular.module('clientApp')
                     return successCallback(_.sortBy(slots));
                 });
             },
-            addSchemaSlot: function (schemaId, slot, successCallback) {
+            addSchemaSlot: function (schemaId, slot, successCallback, errorCallback) {
                 schemaSlotFactory.save({schemaId: schemaId}, slot).$promise.then(
                     function (result) {
                         if (_.isFunction(successCallback)) {
@@ -52,7 +56,7 @@ angular.module('clientApp')
                         }
                     },
                     function (error) {
-                        console.log(error);
+                        defaultErrorHandler(error, errorCallback);
                     });
             },
             book: function (reservation, successCallback, errorCallback) {
@@ -70,11 +74,7 @@ angular.module('clientApp')
                         }
                     },
                     function (error) {
-                        if (_.isFunction(errorCallback)) {
-                            errorCallback(error);
-                        } else {
-                            console.log(error);
-                        }
+                        defaultErrorHandler(error, errorCallback);
                     });
             }
         };

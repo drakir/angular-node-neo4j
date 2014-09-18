@@ -1,0 +1,65 @@
+<div class="panel panel-default">
+
+    <div class="panel-heading"><H4>Scheman</H4></div>
+    <div class="panel-body">
+        <div class="panel-body">
+            <table class="table table-condensed">
+                <thead>
+                <tr>
+                    <th colspan="2">Namn</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="schema in schemas" ng-class="{'active': schema.editing}">
+                    <td ng-hide="schema.editing" class="col-sm-4">{{ schema.name }}</td>
+                    <td ng-hide="schema.editing" class="col-sm-2">
+                        <button type="button" class="btn btn-default btn-sm btn-primary"
+                                ng-click="enableEditing(schema)">
+                            <span class="glyphicon glyphicon-pencil"></span>
+                        </button>
+                        <button type="button" class="btn btn-default btn-sm btn-danger"
+                                ng-click="deleteSchema(schema)">
+                            <span class="glyphicon glyphicon-trash"></span>
+                        </button>
+                    </td>
+
+                    <td ng-show="schema.editing" class="col-sm-4"><input type="text" ng-model="schema.name"
+                            class="form-control">
+                    </td>
+                    <td ng-show="schema.editing" class="col-sm-2">
+                        <button type="button" class="btn btn-default btn-sm btn-primary" ng-click="editSchema(schema)">
+                            <span class="glyphicon glyphicon-ok"></span>
+                        </button>
+                        <button type="button" class="btn btn-default btn-sm" ng-click="disableEditing(schema)">
+                            <span class="glyphicon glyphicon-remove"></span>
+                        </button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+            <div class="form-group">
+                <button type="button" class="btn btn-default btn-sm" ng-click="toggleAddSchema()">
+                    <span class="glyphicon glyphicon-plus"></span> Lägg till ny
+                </button>
+            </div>
+            <div ng-show="addSchema" class="panel panel-default">
+                <div class="panel-heading">Lägg till ny</div>
+                <div class="panel-body">
+                    <div class="form-group col-sm-4">
+                        <label for="name">Namn: </label>
+                        <input id="name" type="text" ng-model="name" class="form-control">
+                    </div>
+                    <div class="form-group col-sm-4" style="margin-top: 25px;">
+                        <button type="button" class="btn btn-default btn-sm btn-primary" ng-click="saveSchema()">
+                            <span class="glyphicon glyphicon-ok"></span> Spara
+                        </button>
+                        <button type="button" class="btn btn-default btn-sm" ng-click="toggleAddSchema()">
+                            <span class="glyphicon glyphicon-remove"></span> Avbryt
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

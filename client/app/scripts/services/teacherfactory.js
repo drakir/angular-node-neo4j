@@ -1,13 +1,11 @@
 'use strict';
 
-/**
- * @ngdoc service
- * @name clientApp.teacherFactory
- * @description
- * # teacherFactory
- * Factory in the clientApp.
- */
 angular.module('clientApp')
     .factory('teacherFactory', function ($resource) {
-        return $resource('/api/teachers/:id', {}, {});
+        return $resource('/api/teachers/:id', {}, {
+            allSchemas: {method: 'GET', url: '/api/teachers/:teacherId/schemas/', isArray: true},
+            editSchema: {method: 'PUT', url: '/api/teachers/:teacherId/schemas/:schemaId'},
+            addSchema: {method: 'POST', url: '/api/teachers/:teacherId/schemas/'},
+            deleteSchema: {method: 'DELETE', url: '/api/teachers/:teacherId/schemas/:schemaId'}
+        });
     });
