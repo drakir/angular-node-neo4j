@@ -45,6 +45,26 @@ angular.module('clientApp')
                         defaultErrorHandler(error, errorCallback);
                     }
                 );
+            },
+            addTeacherSchema: function (teacherId, schema, successCallback, errorCallback) {
+                teacherFactory.addSchema({teacherId: teacherId}, schema).$promise.then(
+                    function (success) {
+                        successCallback(success);
+                    },
+                    function (error) {
+                        defaultErrorHandler(error, errorCallback);
+                    }
+                );
+            },
+            deleteTeacherSchema: function (teacherId, schema, successCallback, errorCallback) {
+                teacherFactory.deleteSchema({teacherId: teacherId, schemaId: schema.id}).$promise.then(
+                    function (success) {
+                        successCallback(success);
+                    },
+                    function (error) {
+                        defaultErrorHandler(error, errorCallback);
+                    }
+                );
             }
         };
     });

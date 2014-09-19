@@ -14,7 +14,7 @@
                     <td editible-text-cell class="col-sm-4" edit="schema.editing" text="schema.name" save="edit(schema, 'name', value)"></td>
                     <td class="col-sm-2">
                         <button ng-if="!schema.editing" type="button" class="btn btn-default btn-sm btn-danger"
-                                ng-click="deleteSchema(schema)">
+                                ng-click="delete(schema)">
                             <span class="glyphicon glyphicon-trash"></span>
                         </button>
                     </td>
@@ -23,27 +23,27 @@
             </table>
 
             <div class="form-group">
-                <button type="button" class="btn btn-default btn-sm" ng-click="toggleAddSchema()">
+                <button type="button" class="btn btn-default btn-sm" ng-click="addSchema = true">
                     <span class="glyphicon glyphicon-plus"></span> Lägg till ny
                 </button>
             </div>
-            <!--<div ng-show="addSchema" class="panel panel-default">-->
-                <!--<div class="panel-heading">Lägg till ny</div>-->
-                <!--<div class="panel-body">-->
-                    <!--<div class="form-group col-sm-4">-->
-                        <!--<label for="name">Namn: </label>-->
-                        <!--<input id="name" type="text" ng-model="name" class="form-control">-->
-                    <!--</div>-->
-                    <!--<div class="form-group col-sm-4" style="margin-top: 25px;">-->
-                        <!--<button type="button" class="btn btn-default btn-sm btn-primary" ng-click="saveSchema()">-->
-                            <!--<span class="glyphicon glyphicon-ok"></span> Spara-->
-                        <!--</button>-->
-                        <!--<button type="button" class="btn btn-default btn-sm" ng-click="toggleAddSchema()">-->
-                            <!--<span class="glyphicon glyphicon-remove"></span> Avbryt-->
-                        <!--</button>-->
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</div>-->
+            <div ng-show="addSchema" class="panel panel-default">
+                <div class="panel-heading">Lägg till ny</div>
+                <div class="panel-body">
+                    <div class="form-group col-sm-4">
+                        <label for="name">Namn: </label>
+                        <input id="name" type="text" ng-model="name" class="form-control">
+                    </div>
+                    <div class="form-group col-sm-4" style="margin-top: 25px;">
+                        <button type="button" class="btn btn-default btn-sm btn-primary" ng-click="save()">
+                            <span class="glyphicon glyphicon-ok"></span> Spara
+                        </button>
+                        <button type="button" class="btn btn-default btn-sm" ng-click="addSchema = false">
+                            <span class="glyphicon glyphicon-remove"></span> Avbryt
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
