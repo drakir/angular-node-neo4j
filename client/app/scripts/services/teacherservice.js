@@ -35,6 +35,16 @@ angular.module('clientApp')
                         defaultErrorHandler(error, errorCallback);
                     }
                 );
+            },
+            editTeacherSchema: function (teacherId, schema, successCallback, errorCallback) {
+                teacherFactory.editSchema({teacherId: teacherId, schemaId: schema.id}, schema).$promise.then(
+                    function (success) {
+                        successCallback(success);
+                    },
+                    function (error) {
+                        defaultErrorHandler(error, errorCallback);
+                    }
+                )
             }
         };
     });

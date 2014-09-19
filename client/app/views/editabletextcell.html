@@ -1,0 +1,15 @@
+<div ng-click="editMode()">
+<span ng-if="!edit">{{model.value}}</span>
+<div ng-if="edit" class="input-group">
+    <input type="text" class="form-control" ng-model="model.value">
+
+    <div class="input-group-btn">
+        <button type="button" class="btn btn-default" ng-click="save($event)">
+            <span class="glyphicon glyphicon-ok"></span>
+        </button>
+        <button type="button" class="btn btn-default" ng-click="cancel($event)">
+            <span class="glyphicon glyphicon-remove"></span>
+        </button>
+    </div>
+</div>
+</div>

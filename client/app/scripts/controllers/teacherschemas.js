@@ -11,4 +11,9 @@ angular.module('clientApp')
             $scope.schemas = schemas;
         });
 
+        $scope.edit = function (schema, key, value) {
+            schema[key] = value;
+            teacherService.editTeacherSchema($routeParams.teacherId, schema, function() {
+            });
+        };
   });
