@@ -7,29 +7,37 @@ angular.module('clientApp', [
     'ngRoute',
     'ngSanitize',
     'btford.socket-io',
-    'ui.bootstrap'
+    'ui.bootstrap',
+    'ng-breadcrumbs'
 ])
     .config(function ($routeProvider) {
         $routeProvider
             .when('/', {
                 templateUrl: 'views/main.html',
-                controller: 'MainCtrl'
+                controller: 'MainCtrl',
+                label: 'Hem'
             })
-            .when('/about', {
-                templateUrl: 'views/about.html',
-                controller: 'AboutCtrl'
+            .when('/students/:studentId', {
+                templateUrl: 'views/student.html',
+                label: 'Studenter',
+                controller: 'StudentCtrl'
             })
             .when('/students/:studentId/schemas/:schemaId', {
                 templateUrl: 'views/studentschema.html',
                 controller: 'StudentSchemaCtrl'
             })
             .when('/teachers/:teacherId/schemas/:schemaId', {
-              templateUrl: 'views/teacherschema.html',
-              controller: 'TeacherSchemaCtrl'
+                templateUrl: 'views/teacherschema.html',
+                controller: 'TeacherSchemaCtrl'
             })
             .when('/teachers/:teacherId/schemas', {
                 templateUrl: 'views/teacherschemas.html',
-                controller: 'TeacherSchemasCtrl'
+                controller: 'TeacherSchemasCtrl',
+                label: 'Scheman'
+            })
+            .when('/studentController', {
+              templateUrl: 'views/studentcontroller.html',
+              controller: 'StudentcontrollerCtrl'
             })
             .otherwise({
                 redirectTo: '/'

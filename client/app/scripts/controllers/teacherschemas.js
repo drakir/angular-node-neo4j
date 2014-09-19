@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('clientApp')
-    .controller('TeacherSchemasCtrl', function ($scope, $routeParams, teacherService) {
+    .controller('TeacherSchemasCtrl', function ($scope, $routeParams, teacherService, $location) {
 
         teacherService.getTeacher($routeParams.teacherId, function (teacher) {
             $scope.$emit('footerName', teacher.name);
@@ -26,9 +26,9 @@ angular.module('clientApp')
                 name: $scope.name
             };
 
-            teacherService.addTeacherSchema($routeParams.teacherId, schema, function () {
+            teacherService.addTeacherSchema($routeParams.teacherId, schema, function (schema) {
                 $scope.addSchema = false;
-                findAllTeacherSchemas();
+                $location.url('/teachers/'+$routeParams.teacherId+'/schemas/'+schema.id);
             });
         };
 
