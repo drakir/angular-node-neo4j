@@ -44,7 +44,7 @@ angular.module('clientApp')
                     function (error) {
                         defaultErrorHandler(error, errorCallback);
                     }
-                )
+                );
             }
         };
     });
