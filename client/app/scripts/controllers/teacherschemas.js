@@ -4,7 +4,7 @@ angular.module('clientApp')
     .controller('TeacherSchemasCtrl', function ($scope, $routeParams, teacherService, $location) {
 
         teacherService.getTeacher($routeParams.teacherId, function (teacher) {
-            $scope.$emit('footerName', teacher.name);
+            $scope.$emit('teacher', teacher);
         });
 
         function findAllTeacherSchemas() {

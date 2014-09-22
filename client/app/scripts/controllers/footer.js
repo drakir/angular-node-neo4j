@@ -3,7 +3,11 @@
 angular.module('clientApp')
     .controller('FooterCtrl', function ($scope, $rootScope) {
 
-        $rootScope.$on('footerName', function(event, value) {
-            $scope.footerName = value;
+        $rootScope.$on('student', function(event, value) {
+            $scope.footerName = value.name;
+        });
+
+        $rootScope.$on('teacher', function(event, value) {
+            $scope.footerName = value.name;
         });
     });

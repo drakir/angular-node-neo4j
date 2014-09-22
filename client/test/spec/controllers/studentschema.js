@@ -23,7 +23,8 @@ describe('Controller: StudentSchemaCtrl', function () {
 
         var mockStudentService = {
             getStudent: function (studentId, successCallback) {
-                successCallback({id: studentId, name: 'Julia'});
+                var student = {id: studentId, name: 'Julia'};
+                successCallback(student);
             }
         };
 
@@ -53,7 +54,8 @@ describe('Controller: StudentSchemaCtrl', function () {
     });
 
     it('should emit an event when a student has been loaded', function () {
-        expect(scope.$emit).toHaveBeenCalledWith('footerName', 'Julia');
+        var student = {id: '8564d720-38d7-11e4-afdd-8fcacdd16f0a', name: 'Julia'};
+        expect(scope.$emit).toHaveBeenCalledWith('student', student);
     });
 
     it('should disable the time slot button when the slot is already reserved', function () {

@@ -24,9 +24,8 @@
 <div class="container">
     <div ng-controller="HeaderCtrl" class="header">
         <ul ng-if="visibleMenu" class="nav nav-pills pull-right">
-            <li class="active"><a ng-href="#">Home</a></li>
-            <li><a ng-href="#/about">About</a></li>
-            <li><a ng-href="#">Contact</a></li>
+            <li ng-class="{'active': isActive('schemas')}"><a ng-href="#/teachers/{{teacherId}}/schemas">Scheman</a></li>
+            <li ng-class="{'active': isActive('classes')}"><a ng-href="#/teachers/{{teacherId}}/classes">Klasser</a></li>
         </ul>
         <h3 class="text-muted">Boka tid</h3>
     </div>

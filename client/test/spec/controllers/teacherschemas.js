@@ -51,6 +51,7 @@ describe('Controller: TeacherSchemasCtrl', function () {
     });
 
     it('should emit teacher name as footerName', function () {
-        expect(scope.$emit).toHaveBeenCalledWith('footerName', 'Rikard');
+        var teacher = {id: '666', name: 'Rikard'};
+        expect(scope.$emit).toHaveBeenCalledWith('teacher', teacher);
     });
 });

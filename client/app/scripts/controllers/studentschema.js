@@ -6,7 +6,7 @@ angular.module('clientApp')
         $scope.schemaId = $routeParams.schemaId;
 
         studentService.getStudent($routeParams.studentId, function(student) {
-            $scope.$emit('footerName', student.name);
+            $scope.$emit('student', student);
         });
 
         $scope.bookSlot = function (slot) {

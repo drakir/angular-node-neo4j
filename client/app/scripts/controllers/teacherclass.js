@@ -4,7 +4,7 @@ angular.module('clientApp')
     .controller('TeacherClassCtrl', function ($scope, $routeParams, teacherService, studentService, $location) {
 
         teacherService.getTeacher($routeParams.teacherId, function(teacher) {
-            $scope.$emit('footerName', teacher.name);
+            $scope.$emit('teacher', teacher);
         });
 
         teacherService.findAllTeacherClasses($routeParams.teacherId, function(classes) {
@@ -17,8 +17,7 @@ angular.module('clientApp')
             });
         }
 
-
         $scope.show = function(className) {
             $location.url('/teachers/'+$routeParams.teacherId+'/classes/'+className);
-        }
+        };
     });

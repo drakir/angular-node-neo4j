@@ -19,7 +19,8 @@ describe('Controller: TeacherSchemaCtrl', function () {
 
         var mockTeacherService = {
             getTeacher: function (teacherId, successCallback) {
-                successCallback({id: teacherId, name: 'Rikard'});
+                var teacher = {id: teacherId, name: 'Rikard'};
+                successCallback(teacher);
             }
         };
 
@@ -35,7 +36,8 @@ describe('Controller: TeacherSchemaCtrl', function () {
     });
 
     it('should emit teacher name on load', function() {
-        expect(scope.$emit).toHaveBeenCalledWith('footerName', 'Rikard');
+        var teacher = {id: 'f3a3c910-33fc-11e4-be18-af9ab5854515', name: 'Rikard'};
+        expect(scope.$emit).toHaveBeenCalledWith('teacher', teacher);
     });
 
 });

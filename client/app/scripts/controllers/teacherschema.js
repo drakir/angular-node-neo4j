@@ -14,7 +14,7 @@ angular.module('clientApp')
         };
 
         teacherService.getTeacher($routeParams.teacherId, function(teacher) {
-            $scope.$emit('footerName', teacher.name);
+            $scope.$emit('teacher', teacher);
         });
 
         $scope.disabled = function () {

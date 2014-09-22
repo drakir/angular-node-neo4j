@@ -15,7 +15,7 @@ describe('Controller: FooterCtrl', function () {
             $scope: scope
         });
 
-        $rootScope.$broadcast('footerName', 'Adam');
+        $rootScope.$broadcast('student', {name:'Adam'});
     }));
 
     it('should set footerName on event', function () {
