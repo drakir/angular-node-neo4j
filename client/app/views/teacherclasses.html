@@ -1,0 +1,31 @@
+
+<div class="panel panel-default">
+
+    <div class="panel-heading"><H4>Klasser</H4></div>
+    <div class="panel-body">
+        <div class="panel-body">
+            <table class="table table-condensed">
+                <thead>
+                <tr>
+                    <th colspan="2">Namn</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="class in classes">
+                    <td editible-text-cell class="col-sm-4" edit="class.editing" text="class.name" save="edit(sclass, 'name', value)"></td>
+                    <td class="col-sm-1">
+                        <button ng-if="!class.editing" type="button" class="btn btn-default btn-sm"
+                                ng-click="show(class)">
+                            <span class="glyphicon glyphicon-pencil"> Konfigurera</span>
+                        </button>
+                        <button ng-if="!class.editing" type="button" class="btn btn-default btn-sm btn-danger"
+                                ng-click="delete(class)">
+                            <span class="glyphicon glyphicon-trash"></span>
+                        </button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

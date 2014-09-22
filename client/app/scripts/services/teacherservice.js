@@ -36,6 +36,16 @@ angular.module('clientApp')
                     }
                 );
             },
+            findAllTeacherClasses: function (teacherId, successCallback, errorCallback) {
+                teacherFactory.classes({teacherId: teacherId}).$promise.then(
+                    function (classes) {
+                        successCallback(classes);
+                    },
+                    function (error) {
+                        defaultErrorHandler(error, errorCallback);
+                    }
+                );
+            },
             editTeacherSchema: function (teacherId, schema, successCallback, errorCallback) {
                 teacherFactory.editSchema({teacherId: teacherId, schemaId: schema.id}, schema).$promise.then(
                     function (success) {

@@ -5,7 +5,11 @@ module.exports = function (app, db) {
      */
     app.get('/api/students', function (req, res) {
         var cypherQuery = "match (s:Student) return s.id as id, s.name as name";
-        db.query(cypherQuery, {}, function (error, results) {
+
+        if (req.query.class) {
+            cypherQuery = "match (s:Student)<-[:hasStudent]-(c:Class) where c.name = {class} return s.id as id, s.name as name";
+        }
+        db.query(cypherQuery, {'class': req.query.class}, function (error, results) {
             if (error) {
                 res.send(error);
             } else {

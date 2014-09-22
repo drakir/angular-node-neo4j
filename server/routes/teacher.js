@@ -29,7 +29,7 @@ module.exports = function (app, db) {
      * Find all teacher's classes
      */
     app.get('/api/teachers/:teacherId/classes', function (req, res) {
-        var cypherQuery = "match (t:Teacher {id:{teacherId}})-[:teacherOf]->(c:Class) return c.name as name";
+        var cypherQuery = "match (t:Teacher {id:{teacherId}})-[:teacherOf]->(c:Class) return c.name as name order by name";
         db.query(cypherQuery, {teacherId: req.params.teacherId}, function (error, response) {
             if (error) {
                 res.send(error);

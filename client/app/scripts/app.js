@@ -13,27 +13,27 @@ angular.module('clientApp', [
         $routeProvider
             .when('/', {
                 templateUrl: 'views/main.html',
-                controller: 'MainCtrl',
-            })
-            .when('/students/:studentId', {
-                templateUrl: 'views/student.html',
-                controller: 'StudentCtrl'
+                controller: 'MainCtrl'
             })
             .when('/students/:studentId/schemas/:schemaId', {
                 templateUrl: 'views/studentschema.html',
                 controller: 'StudentSchemaCtrl'
             })
+            .when('/teachers/:teacherId/schemas', {
+                templateUrl: 'views/teacherschemas.html',
+                controller: 'TeacherSchemasCtrl'
+            })
             .when('/teachers/:teacherId/schemas/:schemaId', {
                 templateUrl: 'views/teacherschema.html',
                 controller: 'TeacherSchemaCtrl'
             })
-            .when('/teachers/:teacherId/schemas', {
-                templateUrl: 'views/teacherschemas.html',
-                controller: 'TeacherSchemasCtrl',
+            .when('/teachers/:teacherId/classes/', {
+                templateUrl: 'views/teacherclasses.html',
+                controller: 'TeacherClassCtrl'
             })
-            .when('/studentController', {
-              templateUrl: 'views/studentcontroller.html',
-              controller: 'StudentcontrollerCtrl'
+            .when('/teachers/:teacherId/classes/:class', {
+                templateUrl: 'views/teacherclass.html',
+                controller: 'TeacherClassCtrl'
             })
             .otherwise({
                 redirectTo: '/'
