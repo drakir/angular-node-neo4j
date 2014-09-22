@@ -7,7 +7,7 @@ module.exports = function (app, db) {
         var cypherQuery = "match (s:Student) return s.id as id, s.name as name";
 
         if (req.query.class) {
-            cypherQuery = "match (s:Student)<-[:hasStudent]-(c:Class) where c.name = {class} return s.id as id, s.name as name";
+            cypherQuery = "match (s:Student)<-[:hasStudent]-(c:Class) where c.name = {class} optional match (s)-[:childOf]-(p:Parent) return distinct s.id as id, s.name as name, c.name as class, collect({name: p.name}) as parents order by name";
         }
         db.query(cypherQuery, {'class': req.query.class}, function (error, results) {
             if (error) {

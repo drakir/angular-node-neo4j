@@ -1,14 +1,32 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
-
-<ul>
-    <li ng-repeat="student in students">{{student.name}}</li>
-</ul>
-
-</body>
-</html>
+<div class="panel panel-default">
+    <div class="panel-heading"><H4>Elever</H4></div>
+    <div class="panel-body">
+            <table class="table table-condensed">
+                <thead>
+                <tr>
+                    <th>Namn</th>
+                    <th>Klass</th>
+                    <th colspan="2">Föräldrar</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="student in students">
+                    <td editible-text-cell class="col-sm-4" edit="student.editing" text="student.name"
+                            save="edit(student, 'name', value)"></td>
+                    <td>{{student.class}}</td>
+                    <td>
+                        <ul class="list-group">
+                            <li class="list-inline" ng-repeat="parent in student.parents">{{parent.name}}</li>
+                        </ul>
+                    </td>
+                    <td class="col-sm-1">
+                        <button ng-if="!student.editing" type="button" class="btn btn-default btn-sm btn-danger"
+                                ng-click="delete(student)">
+                            <span class="glyphicon glyphicon-trash"></span>
+                        </button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+    </div>
+</div>

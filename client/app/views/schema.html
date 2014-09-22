@@ -2,36 +2,34 @@
     <div class="panel panel-default">
         <div class="panel-heading"><H4>{{ schema.name }}</H4></div>
         <div class="panel-body">
-            <div class="panel-body">
-                <ul class="pager">
-                    <li class="previous"><a href="#" ng-if="hasPrevious()" ng-click="previous($event)">&larr;
-                        Föregående</a>
-                    </li>
-                    <li class="next"><a href="#" ng-if="hasNext()" ng-click="next($event)">Nästa &rarr;</a></li>
-                </ul>
-                <table class="table schema">
-                    <thead>
-                    <tr>
-                        <th ng-repeat="schemaSlot in filteredSchemaSlots" ng-class="{'active': schemaSlot.isToday}">{{
-                            schemaSlot.day }}
-                        </th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td ng-repeat="schemaSlot in filteredSchemaSlots" ng-class="{'active': schemaSlot.isToday}">
-                            <button class="btn btn-block btn-sm btn-default"
-                                    ng-repeat="slot in schemaSlot.slot"
-                                    ng-class="{'btn-success': slot.studentId === null, 'disabled': disabled(slot)}"
-                                    ng-click="bookSlot(slot)">
-                                <span class="slotTime">{{slot.time}}</span><span class="studentName"
-                                    ng-if="slot.studentId !== null">{{slot.studentName}}</span>
-                            </button>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
+            <ul class="pager">
+                <li class="previous"><a href="#" ng-if="hasPrevious()" ng-click="previous($event)">&larr;
+                    Föregående</a>
+                </li>
+                <li class="next"><a href="#" ng-if="hasNext()" ng-click="next($event)">Nästa &rarr;</a></li>
+            </ul>
+            <table class="table schema">
+                <thead>
+                <tr>
+                    <th ng-repeat="schemaSlot in filteredSchemaSlots" ng-class="{'active': schemaSlot.isToday}">{{
+                        schemaSlot.day }}
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td ng-repeat="schemaSlot in filteredSchemaSlots" ng-class="{'active': schemaSlot.isToday}">
+                        <button class="btn btn-block btn-sm btn-default"
+                                ng-repeat="slot in schemaSlot.slot"
+                                ng-class="{'btn-success': slot.studentId === null, 'disabled': disabled(slot)}"
+                                ng-click="bookSlot(slot)">
+                            <span class="slotTime">{{slot.time}}</span><span class="studentName"
+                                ng-if="slot.studentId !== null">{{slot.studentName}}</span>
+                        </button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>
