@@ -12,10 +12,10 @@
                 </thead>
                 <tbody>
                 <tr ng-repeat="class in classes">
-                    <td editible-text-cell class="col-sm-4" edit="class.editing" text="class.name" save="edit(sclass, 'name', value)"></td>
+                    <td editible-text-cell class="col-sm-4" edit="class.editing" text="class.name" save="edit(class, 'name', value)"></td>
                     <td class="col-sm-1">
                         <button ng-if="!class.editing" type="button" class="btn btn-default btn-sm"
-                                ng-click="show(class)">
+                                ng-click="show(class.name)">
                             <span class="glyphicon glyphicon-pencil"> Konfigurera</span>
                         </button>
                         <button ng-if="!class.editing" type="button" class="btn btn-default btn-sm btn-danger"
