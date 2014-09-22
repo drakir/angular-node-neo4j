@@ -29,7 +29,6 @@ module.exports = function(config) {
       'bower_components/moment/min/moment-with-locales.js',
       'bower_components/underscore/underscore.js',
       'bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
-      'bower_components/ng-breadcrumbs/dist/ng-breadcrumbs.min.js',
       'app/scripts/**/*.js',
       'test/spec/**/*.js'
     ],

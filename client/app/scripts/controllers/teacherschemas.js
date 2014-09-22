@@ -37,4 +37,8 @@ angular.module('clientApp')
                 findAllTeacherSchemas();
             });
         };
+
+        $scope.show = function(schema) {
+            $location.url('/teachers/'+$routeParams.teacherId+'/schemas/'+schema.id);
+        }
     });

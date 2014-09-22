@@ -1,4 +1,3 @@
-<breadcrumb></breadcrumb>
 
 <div class="panel panel-default">
 
@@ -15,6 +14,10 @@
                 <tr ng-repeat="schema in schemas">
                     <td editible-text-cell class="col-sm-4" edit="schema.editing" text="schema.name" save="edit(schema, 'name', value)"></td>
                     <td class="col-sm-1">
+                        <button ng-if="!schema.editing" type="button" class="btn btn-default btn-sm"
+                                ng-click="show(schema)">
+                            <span class="glyphicon glyphicon-pencil"> Konfigurera</span>
+                        </button>
                         <button ng-if="!schema.editing" type="button" class="btn btn-default btn-sm btn-danger"
                                 ng-click="delete(schema)">
                             <span class="glyphicon glyphicon-trash"></span>

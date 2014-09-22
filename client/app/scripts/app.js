@@ -7,19 +7,16 @@ angular.module('clientApp', [
     'ngRoute',
     'ngSanitize',
     'btford.socket-io',
-    'ui.bootstrap',
-    'ng-breadcrumbs'
+    'ui.bootstrap'
 ])
     .config(function ($routeProvider) {
         $routeProvider
             .when('/', {
                 templateUrl: 'views/main.html',
                 controller: 'MainCtrl',
-                label: 'Hem'
             })
             .when('/students/:studentId', {
                 templateUrl: 'views/student.html',
-                label: 'Studenter',
                 controller: 'StudentCtrl'
             })
             .when('/students/:studentId/schemas/:schemaId', {
@@ -33,7 +30,6 @@ angular.module('clientApp', [
             .when('/teachers/:teacherId/schemas', {
                 templateUrl: 'views/teacherschemas.html',
                 controller: 'TeacherSchemasCtrl',
-                label: 'Scheman'
             })
             .when('/studentController', {
               templateUrl: 'views/studentcontroller.html',
