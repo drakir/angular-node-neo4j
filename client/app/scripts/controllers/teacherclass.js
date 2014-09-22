@@ -20,4 +20,5 @@ angular.module('clientApp')
         $scope.show = function(className) {
             $location.url('/teachers/'+$routeParams.teacherId+'/classes/'+className);
         };
+
     });

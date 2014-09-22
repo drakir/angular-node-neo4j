@@ -30,5 +30,4 @@ angular.module('clientApp')
 
             schemaService.addSchemaSlot($routeParams.schemaId, timeSlot);
         };
-
     });

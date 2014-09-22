@@ -7,6 +7,10 @@ angular.module('clientApp')
             $scope.$emit('teacher', teacher);
         });
 
+        teacherService.findAllTeacherClasses($routeParams.teacherId, function(classes) {
+            $scope.classes = classes;
+        });
+
         function findAllTeacherSchemas() {
             teacherService.findAllTeacherSchemas($routeParams.teacherId, function (schemas) {
                 $scope.schemas = schemas;
@@ -40,5 +44,13 @@ angular.module('clientApp')
 
         $scope.show = function(schema) {
             $location.url('/teachers/'+$routeParams.teacherId+'/schemas/'+schema.id);
+        };
+
+        /**
+         * Temporary code for demo
+         */
+        $scope.openWindows = function (schemaId, className, $event) {
+            $event.preventDefault();
+            teacherService.openUpStudentViews($routeParams.teacherId, schemaId, className)
         };
     });

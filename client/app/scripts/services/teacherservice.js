@@ -8,7 +8,7 @@
  * Service in the clientApp.
  */
 angular.module('clientApp')
-    .service('teacherService', function teacherService(teacherFactory) {
+    .service('teacherService', function teacherService(teacherFactory, $window) {
         function defaultErrorHandler(error, errorCallback) {
             if (_.isFunction(errorCallback)) {
                 errorCallback(error);
@@ -73,6 +73,22 @@ angular.module('clientApp')
                     },
                     function (error) {
                         defaultErrorHandler(error, errorCallback);
+                    }
+                );
+            },
+            /**
+             * Temporary solution until email is in place... :)
+             */
+            openUpStudentViews: function (teacherId, schemaId, className) {
+                teacherFactory.sendToParents({teacherId: teacherId, schemaId: schemaId}, {className: className}).$promise.then(
+                    function (parents) {
+                        _.each(parents, function(parent) {
+                            var url = 'http://localhost:9000/#/students/' + parent.studentId + '/schemas/' + parent.schemaId;
+                            $window.open(url);
+                        });
+                    },
+                    function (error) {
+                        defaultErrorHandler(error);
                     }
                 );
             }

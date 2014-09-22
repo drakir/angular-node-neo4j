@@ -12,6 +12,4 @@ angular.module('clientApp')
             return $location.path().indexOf(path) !== -1;
         };
 
-
-
     });

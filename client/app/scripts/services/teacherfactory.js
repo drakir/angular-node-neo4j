@@ -7,6 +7,7 @@ angular.module('clientApp')
             editSchema: {method: 'PUT', url: '/api/teachers/:teacherId/schemas/:schemaId'},
             addSchema: {method: 'POST', url: '/api/teachers/:teacherId/schemas/'},
             deleteSchema: {method: 'DELETE', url: '/api/teachers/:teacherId/schemas/:schemaId'},
-            classes: {method: 'GET', url: '/api/teachers/:teacherId/classes', isArray: true}
+            classes: {method: 'GET', url: '/api/teachers/:teacherId/classes', isArray: true},
+            sendToParents: {method: 'POST', url: '/api/teachers/:teacherId/schemas/:schemaId/sendToParents', isArray: true}
         });
     });

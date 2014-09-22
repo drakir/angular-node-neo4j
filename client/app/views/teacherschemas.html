@@ -16,8 +16,17 @@
                     <td class="col-sm-1">
                         <button ng-if="!schema.editing" type="button" class="btn btn-default btn-sm"
                                 ng-click="show(schema)">
-                            <span class="glyphicon glyphicon-pencil"> Konfigurera</span>
+                            <span class="glyphicon glyphicon-pencil"></span>
                         </button>
+                        <div class="btn-group" dropdown is-open="status.isopen">
+                            <button type="button" class="btn btn-default btn-sm dropdown-toggle">
+                                <span class="glyphicon glyphicon-envelope"></span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu">
+                                <li ng-repeat="class in classes"><a href="#" ng-click="openWindows(schema.id, class.name, $event)">{{class.name}}</a>
+                                </li>
+                            </ul>
+                        </div>
                         <button ng-if="!schema.editing" type="button" class="btn btn-default btn-sm btn-danger"
                                 ng-click="delete(schema)">
                             <span class="glyphicon glyphicon-trash"></span>
